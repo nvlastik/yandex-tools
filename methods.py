@@ -26,14 +26,11 @@ def auth(s, login, password):
 
 def get_and_auth():
     try:
-        with open('credentials.txt') as file:
-            login, password = file.read().split()
+        
+        login = input("Введите логин: ")
+        password = input("Введите пароль: ")
     except FileNotFoundError:
-        print("Файл с логином и паролем не найден.\n"
-              "Создайте файл 'credentials.txt' и сохраните в нем логин и пароль, разделённые пробелом.\n"
-              "Так, во-первых, вам не придётся каждый раз его вводить.\n"
-              "Во-вторых, даже если рядом и будет кто-то стоять, ваши данные в безопасности.\n"
-              "Файл добавлен в .gitignore, так что с ним точно ничего не случится.")
+        print("Не фортануло")
         exit(1)
     s = requests.Session()
     auth(s, login, password)
